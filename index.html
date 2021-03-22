@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOSS直聘-找工作我要跟老板谈！招聘求职找工作！</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.zhipin.com/zhipin-geek/v375/h5/wap/images/favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="home-header">
+            <img src="./images/home-search-text.png" alt="">
+            <form action="">
+                <input type="text" placeholder="搜索职位/公司">
+                <button>搜索</button>
+            </form>
+        </div>
+        <div class="home-categories">
+            <dl v-for="(item,index) in data">
+                <dt>
+                  <img :src="item.index_logo" alt="">
+                  <span>{{item.title}}</span>
+                </dt>
+                <dd>
+                    <a href="" class="tag" v-for="tag in item.tages">{{tag}}</a>
+                </dd>
+            </dl>
+
+
+
+        </div>
+        <div class="home-footer">
+            <p>违法和不良信息举报邮箱：jubao@kanzhun.com</p>
+            <p>企业服务热线和举报投诉：400 065 5799</p>
+            <p>人力资源服务许可证</p>
+            <p>网上有害信息举报专区</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                data: []
+            },
+            created() {
+                this.getIndexData()
+            },
+            methods: {
+                getIndexData() {
+                    axios('http://127.0.0.1:5500/BossMobile/api/index.json').then((res) => {
+                        this.data = res.data;
+                        console.log(this.data);
+                    }).catch((err) => {
+                        console.log(res);
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

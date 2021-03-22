@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.zhipin.com/zhipin-geek/v375/h5/wap/images/favicon.png">
+    <title>「高级前端研发工程师招聘」_香格里拉酒店集团招聘-BOSS直聘</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="job-header flex padd">
+            <img src="./images/logo.png" alt="">
+            <form action="" class="flex">
+                <input type="text" placeholder="搜索职位">
+                <button class="search-icon"></button>
+            </form>
+        </div>
+        <div class="job-info padd">
+            <div class="text flex">
+                <span>{{job_Introduction.job_name}}</span>
+                <span>{{job_Introduction.salary}}</span>
+            </div>
+            <div class="props flex">
+                <div class="items">
+                    <template v-for="(item, index) in job_Introduction.props" :key="index">
+                      <i v-if="index>0"></i>{{item}}
+                  </template>
+
+                </div>
+            </div>
+            <div class="tags">
+                <span v-for="(tag, index) in job_Introduction.tags" :key="index">{{tag}}</span>
+            </div>
+            <div class="job-update">
+                <small>更新于:{{job_Introduction.creat_time}}</small>
+            </div>
+        </div>
+        <div class="user-info flex padd">
+            <img class="left-img" :src="userInfo.company_img" alt="">
+            <div class="info">
+                <div class="name flex">
+                    <span>{{userInfo.user_name}}</span>
+                    <span class="like">
+            <img src="./images/link-like.png">
+            感兴趣
+          </span>
+                </div>
+                <div class="desc">
+                    {{userInfo.position}}
+                </div>
+            </div>
+            <button type="button" class="btn">立即沟通</button>
+        </div>
+        <div class="job-detail  padd">
+            <h3>职位描述</h3>
+            <div class="text" v-html="info.positionHtml">
+            </div>
+            <h3>公司介绍</h3>
+            <div class="text">
+                从1971年新加坡第一间香格里拉酒店开始，我们便不断向国际迈进；以香港为大本营，今日香格里拉已是亚洲区最大的豪华酒店集团，且被视为为世界最佳的酒店管理集团之一，在无数公众和业内的投选中，均获得一致的美誉。
+            </div>
+            <h3>工商信息</h3>
+            <div class="text">
+                <p>香格里拉饭店管理（上海）有限公司北京分公司</p>
+                <table>
+                    <tr>
+                        <th>法人代表:</th>
+                        <td>南风谨</td>
+                        <th>注册资本:</th>
+                        <td>30000万</td>
+                    </tr>
+                    <tr>
+                        <th>成立日期:</th>
+                        <td>2004-3-11</td>
+                        <th>经营状态:</th>
+                        <td>开业</td>
+                    </tr>
+                </table>
+                <div class="source">
+                    <span>数据来源:天眼查</span>
+                </div>
+                <h3>工作地址</h3>
+                <div class="map"></div>
+            </div>
+        </div>
+        <div class="company-detail flex padd">
+            <img src="./images/xgll.jpg" alt="">
+            <div class="text">
+                <div class="title flex">
+                    <span>香格里拉酒店集团</span>
+                    <button type="button" class="btn">关注该公司</button>
+                </div>
+                <div class="all-name">
+                    香格里拉饭店管理（上海）有限公司北京分公司
+                </div>
+                <div class="tags">
+                    旅游<i></i>不需要融资<i></i>10000人以上
+                </div>
+            </div>
+        </div>
+        <div class="job-remand padd">
+            <h3>相似职位</h3>
+            <ul>
+                <li class="padd" v-for="item in more_position">
+                    <a href="" class="flex">
+                        <div class="company-logo">
+                            <img :src="item.job_img" alt="">
+                        </div>
+                        <div class="company-content">
+                            <div class="title flex">
+                                <span>{{item.position}}</span>
+                                <span>{{item.salary}}</span>
+                            </div>
+                            <div class="location flex">
+                                <span> {{item.company}}</span>
+                                <button class="btn">立即沟通</button>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                job_Introduction: {},
+                userInfo: {},
+                company_info: {},
+                more_position: [],
+                info: {}
+            },
+            created() {
+                this.getDetail()
+            },
+            methods: {
+                async getDetail() {
+                    const {
+                        data: res
+                    } = await axios("http://127.0.0.1:5500/BossMobile/api/detail.json");
+                    console.log(res);
+                    this.info = res;
+                    this.job_Introduction = res.job_Introduction;
+                    this.userInfo = res.user;
+                    this.company_info = res.company_info;
+                    this.more_position = res.more_position;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

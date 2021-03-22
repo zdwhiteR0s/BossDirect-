@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web前端</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.zhipin.com/zhipin-geek/v375/h5/wap/images/favicon.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="list-header flex">
+            <form action="" class="flex">
+                <img src="./images/icon-home.png" alt="">
+                <div class="inner flex">
+                    <input type="text" value="web前端">
+                    <span>&times;</span>
+                </div>
+                <button>搜索</button>
+            </form>
+        </div>
+        <div class="filter flex">
+            <dl class="active1" @click="titleAlert(index,item)" ref="filterRef" v-for="(item,index) in tabData">
+                <dt>{{item.title}}</dt>
+                <dd>
+                    <ul>
+                        <li class="active" v-for="tag in item.tags">{{tag.tag_name}}</li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <ul class="job-list">
+            <li v-for="(item, index) in jobData" :key="index">
+                <a href="" class="flex">
+                    <img :src="item.job_img" alt="">
+                    <div class="text">
+                        <div class="title flex">
+                            {{item.position}}
+                            <span class="salary">{{item.salary}}</span>
+                        </div>
+                        <div class="company">{{item.company}}</div>
+                        <div class="props">
+                            <span v-for="(tag, index) in item.tags" :key="index">{{tag}}</span>
+
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                tabData: [],
+                jobData: [],
+                isActive: false,
+                currentIndex: 0
+            },
+            created() {
+                this.getTabData();
+                this.getJobData();
+            },
+            methods: {
+                async getTabData() {
+                    const {
+                        data: res
+                    } = await axios("http://127.0.0.1:5500/BossMobile/api/filter.json")
+                    console.log(res);
+                    this.tabData = res;
+                },
+                async getJobData() {
+                    const {
+                        data: res
+                    } = await axios("http://127.0.0.1:5500/BossMobile/api/job.json");
+                    this.jobData = res;
+                },
+                titleAlert(index, item) {
+                    this.currentIndex = index;
+                    if (!this.isActive) {
+                        // this.$refs.filterRef[index].className = "active"
+                        this.$refs.filterRef[index].className = "active"
+                            // this.isActive = !this.isActive;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
