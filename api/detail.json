@@ -1,0 +1,43 @@
+{
+    "job_Introduction": {
+        "job_name": "高级前端工程师",
+        "salary": "11k-16k.15薪",
+        "creat_time": "Sat Mar 20 2021 11:24:01 GMT+0800 (中国标准时间)",
+        "tags": ["Vue", "react", "nodejs"],
+        "props": ["北京", "3-5年", "本科"]
+    },
+    "user": {
+        "id": 1,
+        "user_name": "张蕾",
+        "company_img": "./images/xgll.jpg",
+        "position": "香格里拉酒店HR"
+    },
+    "positionHtml": "我们正在寻找一位有经验的前端工程师来帮助我们优化香格里拉的网站和系统。<br>## 要求<br>* 精通JavaScript、jQuery、React、Webpack、NPM。<br>* 熟练掌握网页标签，包括HTML5、CSS3。<br>* 掌握CSS框架的经验（Less或Sass）。<br>* 具备Nodejs框架（Express或Koa）的经验。<br>* 具备优化网站性能的经验。<br>* 具备开发响应式网站的能力。<br>* 具备使用REST APIs、Ajax和JSON的能力。<br>* 能够编写和维护整洁的代码。<br>* 熟练使用GIT。<br>* 熟悉Linux和Nginx。<br>## 教育/经验<br>* 本科以上学历。<br>* 2年以上专业工作环境中的Web开发经验。<br>## 我们能给你提供的：<br>* 对标市场价值的公允薪资；<br>* 宽松、舒适和人性化的外企工作环境；<br>* 注重员工的个人发展，尊重员工的权益；<br>* MacBook Pro + 28寸4K显示器；<br>* 16天带薪年假，12天带薪病假；<br>* 全球百家五星级酒店免费住宿；",
+    "companyIntroduction": "从1971年新加坡第一间香格里拉酒店开始，我们便不断向国际迈进；以香港为大本营，今日香格里拉已是亚洲区最大的豪华酒店集团，且被视为为世界最佳的酒店管理集团之一，在无数公众和业内的投选中，均获得一致的美誉。",
+    "company_info": {
+        "company_name": "香格里拉饭店管理（上海）有限公司北京分公司",
+        "法人代表": "南风谨",
+        "注册资本": "30000万",
+        "成立日期": "2004-3-11",
+        "经营状态": "开业"
+    },
+    "more_position": [{
+            "job_img": "./images/list-img.jpg",
+            "position": "软件开发工程师",
+            "company": "海微康视",
+            "salary": "11k-16k.15薪"
+        },
+        {
+            "job_img": "./images/list-img.jpg",
+            "position": "软件开发工程师",
+            "company": "海微康视",
+            "salary": "11k-16k.15薪"
+        },
+        {
+            "job_img": "./images/list-img.jpg",
+            "position": "软件开发工程师",
+            "company": "海微康视",
+            "salary": "11k-16k.15薪"
+        }
+    ]
+}

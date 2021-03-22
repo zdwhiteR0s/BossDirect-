@@ -1,0 +1,17 @@
+[{
+        "index_logo": "./images/technology.png",
+        "title": "技术",
+        "tages": ["java", "PHP", "Web前端", "数据挖掘", "C++", "IOS"]
+    },
+    {
+        "index_logo": "./images/product.png",
+        "title": "产品",
+        "tages": ["产品经理", "产品助理", "网页产品经理", "数据产品经理"]
+    },
+    {
+        "index_logo": "./images/designer.png",
+        "title": "市场",
+        "tages": ["市场营销", "品牌公关", "市场总监", "策划经理", "SEO", "SEM"]
+    }
+
+]
